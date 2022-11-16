@@ -238,6 +238,7 @@ namespace volePSI
 			bool sortOutput = !cmd.isSet("noSort");
 			bool tls = cmd.isSet("tls");
 			bool quiet = cmd.isSet("quiet");
+			auto numThreads = cmd.getOr<volePSI::u64>("nt", 1);
 
     // The vole type.
 #ifdef ENABLE_BITPOLYMUL
@@ -360,7 +361,7 @@ namespace volePSI
 				RsPsiSender sender;
 
 				sender.setMultType(mType);
-				sender.init(set.size(), theirSize, statSetParam, oc::sysRandomSeed(), mal, 1);
+				sender.init(set.size(), theirSize, statSetParam, oc::sysRandomSeed(), mal, numThreads);
 				macoro::sync_wait(sender.run(set, chl));
 				macoro::sync_wait(chl.flush());
 
@@ -374,7 +375,7 @@ namespace volePSI
 				RsPsiReceiver recver;
 
 				recver.setMultType(mType);
-				recver.init(theirSize, set.size(), statSetParam, oc::sysRandomSeed(), mal, 1);
+				recver.init(theirSize, set.size(), statSetParam, oc::sysRandomSeed(), mal, numThreads);
 				macoro::sync_wait(recver.run(set, chl));
 				macoro::sync_wait(chl.flush());
 

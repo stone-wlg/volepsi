@@ -59,7 +59,8 @@ int main(int argc, char** argv)
             << "   -tls: run the protocol with TLS. Must also set -CA,-sk,-pk\n"
             << "   -CA <value>: if tls, then this must be the path to the CA cert file in pem format\n"
             << "   -pk <value>: if tls, then this must be the path to this parties public key cert file in pem format\n"
-            << "   -sk <value>: if tls, then this must be the path to this parties private key file in pem format\n\n"
+            << "   -sk <value>: if tls, then this must be the path to this parties private key file in pem format\n"
+            << "   -nt <value>: number of threads. (Default = 1)\n\n"
 
             << "   -bin: Optional flag to always interpret the input file as binary.\n"
             << "   -csv: Optional flag to always interpret the input file as a CSV.\n"
