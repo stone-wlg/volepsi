@@ -238,7 +238,7 @@ namespace volePSI
 			bool sortOutput = !cmd.isSet("noSort");
 			bool tls = cmd.isSet("tls");
 			bool quiet = cmd.isSet("quiet");
-			auto numThreads = cmd.getOr<volePSI::u64>("nt", 1);
+			auto numThreads = cmd.getOr("nt", 1);
 
     // The vole type.
 #ifdef ENABLE_BITPOLYMUL
