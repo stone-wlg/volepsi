@@ -6,6 +6,7 @@
 
 namespace volePSI
 {
+	size_t phys_thread_count = std::__1::thread::hardware_concurrency();
 
 	std::ifstream::pos_type filesize(std::ifstream& file)
 	{
@@ -238,7 +239,7 @@ namespace volePSI
 			bool sortOutput = !cmd.isSet("noSort");
 			bool tls = cmd.isSet("tls");
 			bool quiet = cmd.isSet("quiet");
-			auto numThreads = cmd.getOr("nt", 1);
+			auto numThreads = cmd.getOr("nt", phys_thread_count);
 
     // The vole type.
 #ifdef ENABLE_BITPOLYMUL
